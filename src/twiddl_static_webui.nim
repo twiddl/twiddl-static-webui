@@ -11,15 +11,15 @@ import build/list_view
 
 proc build(twiddlPath:string, outputPath:string) =
   let
-    tw = openTwiddlEnv(twiddlPath)
+    env = openTwiddlEnv(twiddlPath)
 
   createDir(outputPath)
 
-  writeFile(outputPath / "index.html", buildIndex(tw))
-  writeFile(outputPath / "list.html", buildListView(tw))
-  writeFile(outputPath / "statistics.html", buildStatistics(tw))
-  for build in tw.builds:
-    writeFile(outputPath / "builds" / $build.id & ".html", buildBuildView(build))
+  writeFile(outputPath / "index.html", buildIndex(env))
+  writeFile(outputPath / "list.html", buildListView(env))
+  writeFile(outputPath / "statistics.html", buildStatistics(env))
+  for build in env.builds:
+    writeFile(outputPath / "builds" / $build.id & ".html", buildBuildView(env, build))
 
 when isMainModule:
   var p = newParser("twiddl_static_webui"):

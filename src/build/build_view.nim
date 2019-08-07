@@ -1,8 +1,8 @@
-import htmlgen, ropes
+import os, htmlgen, ropes
 
 import twiddl
 
-proc buildBuildView*(b:Build):string =
+proc buildBuildView*(env:TwiddlEnv, b:Build):string =
   const
     header = slurp("common-header.html")
     footer = slurp("common-footer.html")
@@ -15,6 +15,8 @@ proc buildBuildView*(b:Build):string =
   result.add(h1("Logs"))
   if b.logs.len < 1:
     result.add("No logs produced.\n")
+  for log in b.logs:
+    result.add(pre(readFile(log.path)))
 
   result.add(h1("Artifacts"))
   if b.artifacts.len < 1:
