@@ -1,0 +1,10 @@
+{
+	"name": "twiddl-static-webui",
+	"jobs": {
+		"build": {
+			"runner": "unsupervised",
+			"commands": ["nimble build"],
+			"artifacts": ["twiddl_static_webui"],
+		},
+	},
+}
