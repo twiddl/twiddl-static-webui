@@ -20,8 +20,8 @@ proc buildListView*(tw:TwiddlEnv):string =
     for i in countdown(tw.builds.high, tw.builds.low):
       let build = tw.builds[i]
       result.add("<tr>\n")
-      result.addf("<td><a href=\"builds/$1.html\">$1</a></td>", [rope($build.id)])
-      result.addf("<td>$1</td>", [rope($build.status)])
+      result.addf("<td><a href=\"build$1.html\">$1</a></td>", [rope($build.id)])
+      result.addf("<td>$1</td>", [rope(build.status.statusHumanReadable())])
       result.addf("<td>$1</td>", [rope($build.comment)])
       result.add("</tr>\n")
 

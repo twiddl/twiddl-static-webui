@@ -1,16 +1,22 @@
-import os, htmlgen, ropes
+import os, htmlgen, ropes, options, times
 
 import twiddl
 
-proc buildBuildView*(env:TwiddlEnv, b:Build):string =
+proc buildBuildView*(env:TwiddlEnv, b:Build): string =
   const
     header = slurp("common-header.html")
     footer = slurp("common-footer.html")
   var result = rope()
 
   result.add(header)
-  result.addf(h1("Build $1"), [rope(b.id)])
-  result.addf("Current status: $1 \n", [rope($b.status)])
+  result.addf(h1("Build $1"), [b.id.rope])
+  result.addf("Current status: $1 \n", [b.status.statusHumanReadable.rope])
+
+  if b.timeStarted.isSome:
+    result.addf("Time started: $1 ", [($b.timeStarted.get).rope])
+    if b.timeFinished.isSome:
+      result.addf("Time finished: $1 ", [($b.timeFinished.get).rope])
+      result.addf("Duration: $1 ", [($(b.timeFinished.get - b.timeStarted.get)).rope])
 
   result.add(h1("Logs"))
   if b.logs.len < 1:
