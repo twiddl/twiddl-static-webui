@@ -5,7 +5,7 @@ author        = "joachimschmidt557"
 description   = "Generate static HTML for exploring a twiddl environment"
 license       = "MIT"
 srcDir        = "src"
-bin           = @["twiddl_static_webui"]
+bin           = @["twiddl_webui"]
 
 
 
