@@ -1,0 +1,15 @@
+{% extends "main.html" %}
+
+{% block content %}
+    <h1>Build {{ build.id }}</h1>
+
+    Current status: {{ build.status }}
+
+    {% if build.time_started %}
+        Time started: {{ build.time_started }}
+    {% endif}
+
+    <h2>Logs</h2>
+
+    <h2>Artifacts</h2>
+{% endblock %}

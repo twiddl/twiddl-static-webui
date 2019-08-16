@@ -1,0 +1,13 @@
+{% extends "main.html" %}
+
+{% block content %}
+    <h1>Statistics</h1>
+
+    Total number of builds: {{ statistics.number_builds }}
+    Total number of successful builds: {{ statistics.number_successful_builds }}
+    Total number of failed builds: {{ statistics.number_failed_builds }}
+
+    <h2>Success rate</h2>
+
+    <h2>Past 30 days</h2>
+{% endblock %}

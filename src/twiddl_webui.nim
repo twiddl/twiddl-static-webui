@@ -18,10 +18,10 @@ when isMainModule:
       resp templates.renderTemplate("index.html")
 
     get "/builds":
-      resp ""
+      resp templates.renderTemplate("builds.html")
 
     get "/statistics":
-      resp ""
+      resp templates.renderTemplate("statistics.html")
 
     get "/builds/@build":
       resp ""
