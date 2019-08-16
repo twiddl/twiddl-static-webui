@@ -12,3 +12,22 @@ when isMainModule:
   let opts = p.parse()
 
   var templates = newNwt("templates/*.html")
+
+  routes:
+    get "/":
+      resp templates.renderTemplate("index.html")
+
+    get "/builds":
+      resp ""
+
+    get "/statistics":
+      resp ""
+
+    get "/builds/@build":
+      resp ""
+
+    get "/builds/@build/logs/@id":
+      resp ""
+
+    get "/builds/@build/artifacts/@id":
+      resp ""
